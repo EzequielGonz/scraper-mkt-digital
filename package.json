@@ -1,0 +1,11 @@
+{
+  "name": "gmaps-scraper-vercel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Scraper de Google Maps (busqueda simple) para correr como funcion serverless en Vercel, con control de duplicados via Vercel KV",
+  "dependencies": {
+    "@sparticuz/chromium": "^123.0.1",
+    "puppeteer-core": "^22.15.0",
+    "@vercel/kv": "^2.0.0"
+  }
+}
