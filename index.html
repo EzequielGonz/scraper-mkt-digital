@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scraper de Google Maps — versión celular</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="contenido">
+    <header class="seccion__header">
+      <h1>Scraper de Google Maps</h1>
+      <p>Versión liviana para usar desde el celular. Búsqueda simple únicamente — los resultados nuevos se guardan solos, sin duplicar los de antes.</p>
+    </header>
+
+    <div class="panel">
+      <form id="form-busqueda" class="form">
+        <label class="campo">
+          <span>Rubro o búsqueda</span>
+          <input type="text" name="rubro" placeholder="Ej: gomerías" required />
+        </label>
+        <label class="campo">
+          <span>Ubicación (opcional)</span>
+          <input type="text" name="ubicacion" placeholder="Ej: Mar del Plata, Argentina" />
+        </label>
+        <label class="campo">
+          <span>Máximo de resultados (hasta 30)</span>
+          <input type="number" name="max" value="15" min="1" max="30" />
+        </label>
+        <p class="nota">Cada búsqueda tarda hasta un minuto. Si pedís muchos resultados puede llegar a cortarse por el límite de tiempo de la función — si pasa, probá con menos.</p>
+        <button type="submit" class="boton boton--primario">Buscar</button>
+      </form>
+    </div>
+
+    <div class="panel panel--consola">
+      <div class="panel__header-fila">
+        <h2>Resultado</h2>
+        <span class="pastilla" id="estado">En espera</span>
+      </div>
+      <p class="nota" id="mensaje-vacio">Todavía no hiciste ninguna búsqueda.</p>
+
+      <div id="resultados" hidden>
+        <div class="tabla-scroll">
+          <table class="tabla" id="tabla-resultados">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="botonera">
+          <button class="boton boton--secundario" id="btn-descargar">Descargar CSV de esta búsqueda</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel__header-fila">
+        <h2>Historial completo</h2>
+        <button class="boton boton--secundario" id="btn-ver-historial">Ver / descargar todo lo guardado</button>
+      </div>
+      <p class="nota">Todos los negocios nuevos que encontraste en cualquier búsqueda anterior, acumulados en la base.</p>
+      <p class="nota" id="historial-estado"></p>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
